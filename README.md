@@ -131,3 +131,95 @@ The `import` keyword is used to bring in code from other modules. Depending on t
   - The structure of imports and exports is static, meaning they cannot be dynamically generated at runtime. This allows tools like bundlers and linters to analyze dependencies more effectively.
 
 By mastering the `import` and `export` statements, you can create modular, reusable, and maintainable codebases that are easier to scale and debug.
+
+### CommonJS Modules
+
+CommonJS is a module system primarily used in Node.js. It allows developers to organize their code into reusable modules. Unlike ES6 modules, CommonJS modules are synchronous and designed for server-side JavaScript. Below are some key points about CommonJS:
+
+#### Key Features of CommonJS
+
+1. **Synchronous Loading**:
+    - Modules are loaded synchronously, which is suitable for server-side environments where files are readily available on the local filesystem.
+
+2. **Exports**:
+    - CommonJS uses `module.exports` to export functionality from a module.
+    - Example:
+      ```javascript
+      // math.js
+      module.exports.add = (a, b) => a + b;
+      module.exports.subtract = (a, b) => a - b;
+      ```
+
+3. **Require**:
+    - The `require` function is used to import modules.
+    - Example:
+      ```javascript
+      // app.js
+      const math = require('./math.js');
+      console.log(math.add(2, 3)); // Output: 5
+      console.log(math.subtract(5, 2)); // Output: 3
+      ```
+
+4. **Single Export**:
+    - You can also export a single value or object.
+    - Example:
+      ```javascript
+      // logger.js
+      module.exports = function log(message) {
+         console.log(message);
+      };
+
+      // app.js
+      const log = require('./logger.js');
+      log('Hello, CommonJS!'); // Output: Hello, CommonJS!
+      ```
+
+5. **Dynamic Loading**:
+    - Modules can be loaded dynamically at runtime using `require`.
+    - Example:
+      ```javascript
+      if (process.env.NODE_ENV === 'development') {
+         const devTools = require('./devTools.js');
+         devTools.enable();
+      }
+      ```
+
+6. **Compatibility**:
+    - CommonJS modules are widely supported in Node.js but are not natively supported in browsers. Tools like Browserify or Webpack can be used to bundle CommonJS modules for browser environments.
+
+#### CommonJS vs ES6 Modules
+
+| Feature                | CommonJS                     | ES6 Modules               |
+|------------------------|------------------------------|---------------------------|
+| Syntax                 | `require` and `module.exports` | `import` and `export`     |
+| Loading                | Synchronous                 | Asynchronous              |
+| Scope                  | File-level scope            | Module-level scope        |
+| Browser Support        | Requires bundlers           | Native support in modern browsers |
+| Dynamic Imports        | Supported                   | Supported via `import()`  |
+
+#### Example: Using CommonJS Modules
+
+Here’s an example of how CommonJS modules can be used in a Node.js application:
+
+1. **math.js**:
+    ```javascript
+    module.exports = {
+      add: (a, b) => a + b,
+      subtract: (a, b) => a - b,
+      multiply: (a, b) => a * b,
+      divide: (a, b) => a / b,
+    };
+    ```
+
+2. **app.js**:
+    ```javascript
+    const math = require('./math.js');
+
+    console.log(math.add(10, 5));       // Output: 15
+    console.log(math.subtract(10, 5)); // Output: 5
+    console.log(math.multiply(10, 5)); // Output: 50
+    console.log(math.divide(10, 5));   // Output: 2
+    ```
+
+By understanding CommonJS, developers can effectively work with Node.js and build modular server-side applications. While ES6 modules are becoming the standard, CommonJS remains relevant for many existing projects and server-side use cases.
+common JS
