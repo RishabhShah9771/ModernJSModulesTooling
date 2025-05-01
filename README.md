@@ -124,4 +124,37 @@ By understanding and applying declarative programming principles, you can write 
 
 ---
 
-By mastering these concepts, you can create modular, reusable, and maintainable codebases that are easier to scale and debug.
+### Functional Programming
+
+Functional programming is a **declarative programming paradigm** based on the idea of writing software by combining pure functions, avoiding side effects, and ensuring immutability.
+
+#### Key Concepts
+
+- **Side Effects**: 
+  Side effects occur when a function modifies any data outside of its scope, such as mutating external variables, logging to the console, or writing to the DOM. Functional programming aims to minimize or eliminate side effects.
+
+- **Pure Functions**: 
+  A pure function is a function without side effects. It does not depend on external variables and always returns the same output for the same input.
+
+  **Example**:
+  ```javascript
+  // Pure Function
+  const add = (a, b) => a + b;
+  console.log(add(2, 3)); // Output: 5
+  ```
+
+- **Immutability**: 
+  In functional programming, state (data) is never modified directly. Instead, a copy of the state is created, mutated, and returned.
+
+  **Example**:
+  ```javascript
+  // Immutability Example
+  const numbers = [1, 2, 3];
+  const newNumbers = [...numbers, 4];
+  console.log(newNumbers); // Output: [1, 2, 3, 4]
+  console.log(numbers);    // Output: [1, 2, 3] (original array remains unchanged)
+  ```
+
+By adhering to these principles, functional programming promotes cleaner, more predictable, and easier-to-test code.
+
+
